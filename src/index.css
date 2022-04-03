@@ -1,4 +1,11 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  font-size: 1.5rem;
   background-color: wheat;
   min-height: 100vh;
   display: flex;
