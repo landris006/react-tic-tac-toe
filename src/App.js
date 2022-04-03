@@ -1,6 +1,6 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import './App.css';
-import Start from './Start';
+import Settings from './Settings';
 import Game from './Game';
 import reducer from './reducer';
 
@@ -15,11 +15,13 @@ const initialState = {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => console.log('rerender'));
+
   if (!state.inProgress) {
-    return <Start dispatch state={state} />;
+    return <Settings dispatch={dispatch} />;
   }
 
-  return <Game dispatch />;
+  return <Game dispatch={dispatch} {...state} />;
 };
 
 export default App;

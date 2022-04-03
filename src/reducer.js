@@ -1,23 +1,23 @@
 export default function reducer(state, action) {
-  switch (action.type) {
-    case 'start':
-      const { size, toWin, circleStarts } = action.payload;
-      let matrix = [];
+  const { type, payload } = action;
 
-      for (let i = 0; i < size; i++) {
-        let row = [];
+  if (type === 'start') {
+    const { size, toWin, circleStarts } = payload;
+    const matrix = [];
 
-        for (let j = 0; j < size; j++) {
-          row.push(0);
-        }
+    for (let i = 0; i < size; i++) {
+      const row = [];
 
-        matrix.push(row);
+      for (let j = 0; j < size; j++) {
+        row.push(0);
       }
 
-      return { ...state, toWin, circleStarts, inProgress: true, matrix };
+      matrix.push(row);
+    }
 
-    default:
-      console.error('Not such action exists...');
-      return state;
+    return { ...state, toWin, circleStarts, inProgress: true, matrix, size };
   }
+
+  console.error('Not such action exists...');
+  return state;
 }

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Start.css';
+import React, { useEffect, useState } from 'react';
+import './Settings.css';
 
 const Start = ({ dispatch }) => {
   const [size, setSize] = useState(3);
@@ -11,6 +11,14 @@ const Start = ({ dispatch }) => {
 
     dispatch({ type: 'start', payload: { size, toWin, circleStarts } });
   };
+
+  useEffect(() => {
+    if (toWin <= size) {
+      return;
+    }
+
+    setToWin(size);
+  }, [size, toWin]);
 
   return (
     <form onSubmit={handleSubmit} className="start-form">
