@@ -4,12 +4,12 @@ import './Settings.css';
 const Start = ({ dispatch }) => {
   const [size, setSize] = useState(3);
   const [toWin, setToWin] = useState(3);
-  const [circleStarts, setCircleStarts] = useState(false);
+  const [circleTurn, setCircleTurn] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: 'start', payload: { size, toWin, circleStarts } });
+    dispatch({ type: 'START', payload: { size, toWin, circleTurn } });
   };
 
   useEffect(() => {
@@ -57,8 +57,8 @@ const Start = ({ dispatch }) => {
               type="radio"
               name="whoStarts"
               id="x"
-              checked={!circleStarts}
-              onChange={(e) => setCircleStarts(!e.target.checked)}
+              checked={!circleTurn}
+              onChange={(e) => setCircleTurn(!e.target.checked)}
             />
             <label htmlFor="x">x</label>
           </div>
@@ -67,8 +67,8 @@ const Start = ({ dispatch }) => {
               type="radio"
               name="whoStarts"
               id="o"
-              checked={circleStarts}
-              onChange={(e) => setCircleStarts(e.target.checked)}
+              checked={circleTurn}
+              onChange={(e) => setCircleTurn(e.target.checked)}
             />
             <label htmlFor="o">o</label>
           </div>

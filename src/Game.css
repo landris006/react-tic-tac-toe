@@ -9,7 +9,7 @@
   border: 2px solid black;
   width: 12vw;
   height: 12vw;
-  margin: 10px;
+  margin: 0.5vw;
 }
 
 .cross::after, .cross::before, .unclaimed-cross:hover::before, .unclaimed-cross:hover::after {
@@ -19,14 +19,15 @@
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   width: 100%;
-  height: 20px;
+  height: 10%;
   background-color: black;
 }
 .cross::before, .unclaimed-cross:hover::before {
   transform: translateY(-50%) rotate(-45deg);
-} 
+}
 .unclaimed-cross, .unclaimed-circle {
   opacity: 70%;
+  cursor: pointer;
 }
 
 .circle::after, .circle::before, .unclaimed-circle:hover::before, .unclaimed-circle:hover::after {
@@ -46,4 +47,8 @@
   height: 70%;
   background-color: wheat;
   z-index: 1;
+}
+
+.winner {
+  background-color: green;
 }

@@ -7,15 +7,14 @@ import reducer from './reducer';
 const initialState = {
   inProgress: false,
 
-  matrix: null,
-  circleStarts: null,
-  toWin: null,
+  matrix: [],
+  circleTurn: false,
+  toWin: 1,
+  winner: '',
 };
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => console.log('rerender'));
 
   if (!state.inProgress) {
     return <Settings dispatch={dispatch} />;
