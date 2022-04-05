@@ -1,16 +1,7 @@
 import React, { useReducer } from 'react';
 import Settings from './Settings';
 import Game from './Game';
-import reducer from './reducer';
-
-const initialState = {
-  inProgress: false,
-
-  matrix: [],
-  circleTurn: false,
-  toWin: 1,
-  winner: '',
-};
+import reducer, { initialState } from './reducer';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);

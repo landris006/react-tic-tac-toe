@@ -1,12 +1,20 @@
 .game-container {
   display: grid;
-  border: 4px solid black;
-  padding: 5px;
+  border: 0px solid black;
+  padding: 8px;
+}
+
+.game-title  {
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .field {
   position: relative;
   border: 2px solid black;
+  background-color: rgb(246, 189, 82);
+  border-radius: 10px;
+  transition-duration: 0.2s;
   width: 12vw;
   height: 12vw;
   margin: 0.5vw;
@@ -24,10 +32,18 @@
 }
 .cross::before, .unclaimed-cross:hover::before {
   transform: translateY(-50%) rotate(-45deg);
+
 }
 .unclaimed-cross, .unclaimed-circle {
   opacity: 70%;
   cursor: pointer;
+
+}
+
+.unclaimed-cross:hover, .unclaimed-circle:hover {
+  transform: scale(1.07) translate(-5px, -5px) ;
+  box-shadow: 5px 5px;
+
 }
 
 .circle::after, .circle::before, .unclaimed-circle:hover::before, .unclaimed-circle:hover::after {
@@ -45,10 +61,14 @@
 .circle::before, .unclaimed-circle:hover::before {
   width: 70%;
   height: 70%;
-  background-color: wheat;
+  background-color: rgb(246, 189, 82);
   z-index: 1;
 }
 
-.winner {
+.winner, .circle.winner::before {
   background-color: green;
+  transition-duration: 2s;
+}
+.winner {
+  transform: rotateX(180deg);
 }

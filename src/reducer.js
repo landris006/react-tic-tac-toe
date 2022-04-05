@@ -1,3 +1,12 @@
+export const initialState = {
+  inProgress: false,
+
+  matrix: [],
+  circleTurn: false,
+  toWin: 1,
+  winner: '',
+};
+
 export default function reducer(state, { type, payload }) {
   if (type === 'START') {
     console.log('start');
@@ -56,6 +65,20 @@ export default function reducer(state, { type, payload }) {
     };
   }
 
+  if (type === 'RESTART') {
+    console.log(state);
+    const matrix = state.matrix.map((row) => row.map((field) => 0));
+
+    return { ...state, matrix, winner: '', winningFields: [] };
+  }
+
+  if (type === 'SETTINGS') {
+    console.log(state);
+    const matrix = state.matrix.map((row) => row.map((field) => 0));
+
+    return { ...initialState };
+  }
+
   throw new Error(`Not such action exists: ${type}`);
 }
 
@@ -89,34 +112,34 @@ function checkArea(matrix, toWin) {
 
       if (Math.abs(rowSum) >= toWin) {
         winningFields = winningRow;
-        winner = 'o';
+        winner = 'O';
         if (rowSum > 0) {
-          winner = 'x';
+          winner = 'X';
         }
         return { winner, winningFields };
       }
       if (Math.abs(colSum) >= toWin) {
         winningFields = winningCol;
-        winner = 'o';
+        winner = 'O';
         if (colSum > 0) {
-          winner = 'x';
+          winner = 'X';
         }
         return { winner, winningFields };
       }
 
       if (Math.abs(diagSum1) >= toWin) {
         winningFields = winningDiag1;
-        winner = 'o';
+        winner = 'O';
         if (diagSum1 > 0) {
-          winner = 'x';
+          winner = 'X';
         }
         return { winner, winningFields };
       }
       if (Math.abs(diagSum2) >= toWin) {
         winningFields = winningDiag2;
-        winner = 'o';
+        winner = 'O';
         if (diagSum2 > 0) {
-          winner = 'x';
+          winner = 'X';
         }
         return { winner, winningFields };
       }

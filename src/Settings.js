@@ -22,7 +22,7 @@ const Start = ({ dispatch }) => {
 
   return (
     <form onSubmit={handleSubmit} className="start-form">
-      <h1>Options</h1>
+      <h1>Settings</h1>
       <div className="field-container">
         <label htmlFor="size">Size:</label>
         <div>
@@ -74,7 +74,7 @@ const Start = ({ dispatch }) => {
           </div>
         </div>
       </div>
-      <button>Start Game</button>
+      <button className="btn">Start Game</button>
     </form>
   );
 };
