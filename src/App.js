@@ -1,5 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
-import './App.css';
+import React, { useReducer } from 'react';
 import Settings from './Settings';
 import Game from './Game';
 import reducer from './reducer';

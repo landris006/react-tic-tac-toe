@@ -17,7 +17,7 @@ export default function reducer(state, { type, payload }) {
   if (type === 'CAPTURE') {
     const { rowIndex, colIndex } = payload;
     const matrix = state.matrix.map((row) => [...row]);
-    const { toWin, size } = state;
+    const { toWin } = state;
 
     if (matrix[rowIndex][colIndex] !== 0 || state.winner) {
       return state;
