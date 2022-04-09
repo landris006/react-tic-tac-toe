@@ -73,13 +73,10 @@ export default function reducer(state, { type, payload }) {
   }
 
   if (type === 'SETTINGS') {
-    console.log(state);
-    const matrix = state.matrix.map((row) => row.map((field) => 0));
-
     return { ...initialState };
   }
 
-  throw new Error(`Not such action exists: ${type}`);
+  throw new Error(`No such action exists: ${type}`);
 }
 
 function checkArea(matrix, toWin) {
@@ -101,7 +98,7 @@ function checkArea(matrix, toWin) {
     winningDiag1.push([i, i]);
 
     diagSum2 += matrix[i]?.[toWin - 1 - i] ?? 0;
-    winningDiag2.push([toWin - 1 - i, toWin - 1 - i]);
+    winningDiag2.push([i, toWin - 1 - i]);
 
     for (let j = 0; j < toWin; j++) {
       rowSum += matrix[i]?.[j] ?? 0;
