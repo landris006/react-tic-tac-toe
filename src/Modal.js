@@ -9,7 +9,7 @@ const Modal = ({ winner, dispatch, winnerCount }) => {
     <>
       <div className="blur" style={{ animationDelay: delay }}></div>
       <div className="modal" style={{ animationDelay: delay }}>
-        <h2>{winner} wins!</h2>
+        <h2>{winner === 'Draw!' ? winner : winner + ' wins!'}</h2>
         <div>
           <button className="btn" onClick={() => dispatch({ type: 'RESTART' })}>
             restart

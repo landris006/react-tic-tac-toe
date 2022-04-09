@@ -16,7 +16,7 @@ const Game = ({
         <Modal
           winner={winner}
           dispatch={dispatch}
-          winnerCount={winningFields.length}
+          winnerCount={winningFields?.length}
         />
       )}
       <h1 className="game-title">turn: {circleTurn ? 'O' : 'X'}</h1>

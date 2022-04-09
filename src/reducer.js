@@ -9,7 +9,6 @@ export const initialState = {
 
 export default function reducer(state, { type, payload }) {
   if (type === 'START') {
-    console.log('start');
     const { size, toWin, circleTurn } = payload;
     const matrix = [];
 
@@ -50,23 +49,24 @@ export default function reducer(state, { type, payload }) {
             return correctedField;
           });
 
-          console.log(check?.winner, check?.winningFields);
           break outer;
         }
       }
     }
 
+    const noEmptyField =
+      matrix.flat(2).find((field) => field === 0) === 0 ? '' : 'Draw!';
+
     return {
       ...state,
       matrix,
       circleTurn: !state.circleTurn,
-      winner: check?.winner,
+      winner: check?.winner || noEmptyField,
       winningFields: check?.winningFields,
     };
   }
 
   if (type === 'RESTART') {
-    console.log(state);
     const matrix = state.matrix.map((row) => row.map((field) => 0));
 
     return { ...state, matrix, winner: '', winningFields: [] };
