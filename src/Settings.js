@@ -12,13 +12,20 @@ const Start = ({ dispatch }) => {
     dispatch({ type: 'START', payload: { size, toWin, circleTurn } });
   };
 
-  useEffect(() => {
-    if (toWin <= size) {
+  const handleToWinSlider = (e) => {
+    if (e.target.value > size) {
+      setToWin(size);
       return;
     }
 
-    setToWin(size);
-  }, [size, toWin]);
+    setToWin(e.target.value);
+  };
+
+  useEffect(() => {
+    if (toWin > size) {
+      setToWin(size);
+    }
+  }, [size]);
 
   return (
     <form onSubmit={handleSubmit} className="start-form">
@@ -46,7 +53,7 @@ const Start = ({ dispatch }) => {
             min="3"
             id="toWin"
             value={toWin}
-            onChange={(e) => setToWin(e.target.value)}
+            onChange={handleToWinSlider}
           />
           <span>{toWin}</span>
         </div>
